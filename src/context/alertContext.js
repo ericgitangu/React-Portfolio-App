@@ -14,7 +14,7 @@ export const AlertProvider = ({ children }) => {
 
   return (
     <AlertContext.Provider
-    // @ts-ignore
+      // @ts-ignore
       value={{
         ...state,
         onOpen: (type, message) => setState({ isOpen: true, type, message }),
