@@ -37,7 +37,7 @@ const ContactMeSection = () => {
 			email: Yup.string()
 				.email('Invalid email address')
 				.required('Email is required'),
-			comment: Yup.string().required('Comment is required'),
+			comment: Yup.string().required('Comment is required').max(25),
 		}),
 		onSubmit: (values) => {
 			submit('', values);
@@ -45,7 +45,7 @@ const ContactMeSection = () => {
 	});
 
 useEffect(() => {
-  console.log('useEffect: ' + JSON.stringify(response));
+//   console.log('useEffect: ' + JSON.stringify(response));
   if (response && response['type'] === 'success') {
     onOpen(
 			'success', `Thank you, ${
@@ -64,13 +64,13 @@ useEffect(() => {
 		<FullScreenSection
 			isDarkBackground
 			backgroundColor='#512DA8'
-			py={16}
+			py={4}
 			spacing={8}>
-			<VStack w='1024px' p={32} alignItems='flex-start'>
+			<VStack w='1024px' p={24} alignItems='flex-start'>
 				<Heading as='h1' id='contact-me-section'>
 					Contact me
 				</Heading>
-				<Box p={6} rounded='md' w='100%'>
+				<Box p={2} rounded='md' w='100%'>
 					<form onSubmit={formik.handleSubmit}>
 						<VStack spacing={4}>
 							<FormControl
