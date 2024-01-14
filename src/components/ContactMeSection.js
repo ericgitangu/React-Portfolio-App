@@ -36,7 +36,7 @@ const ContactMeSection = () => {
       email: Yup.string()
         .email("Invalid email address")
         .required("Email is required"),
-      comment: Yup.string().required("Comment is required").max(25),
+      comment: Yup.string().required("Comment is required").min(25).max(500),
     }),
     onSubmit: (values) => {
       submit("", values);
@@ -76,7 +76,7 @@ const ContactMeSection = () => {
             <VStack spacing={4}>
               <FormControl
                 isInvalid={
-                  (formik.errors.firstName ?? "").toString().length > 0
+                  !!formik.errors.firstName && formik.touched.firstName
                 }
               >
                 <Input
@@ -89,7 +89,7 @@ const ContactMeSection = () => {
               </FormControl>
 
               <FormControl
-                isInvalid={(formik.errors.email ?? "").toString().length > 0}
+                isInvalid={!!formik.errors.email && formik.touched.email}
               >
                 <Input
                   {...formik.getFieldProps("email")}
@@ -117,7 +117,7 @@ const ContactMeSection = () => {
               </FormControl>
 
               <FormControl
-                isInvalid={(formik.errors.comment ?? "").toString().length > 0}
+                isInvalid={!!formik.errors.comment && formik.touched.comment}
               >
                 <Textarea
                   {...formik.getFieldProps("comment")}
