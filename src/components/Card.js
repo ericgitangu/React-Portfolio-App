@@ -5,7 +5,13 @@ import React from "react";
 
 const Card = ({ title, description, imageSrc }) => {
   return (
-    <HStack spacing={4} backgroundColor={"white"} px={4} py={4} borderRadius={15}>
+    <HStack
+      spacing={4}
+      backgroundColor={"white"}
+      px={4}
+      py={4}
+      borderRadius={15}
+    >
       <Image src={imageSrc} alt={title} boxSize="100px" borderRadius={15} />
       <VStack align="start" spacing={2}>
         <Heading as="h3" size="md" color={"black"}>
